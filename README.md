@@ -14,6 +14,8 @@ Example 1, list all folders containing links:
     7   Ubuntu and Free Software links
     12   Mozilla Firefox
 
+    Try using: $ python random_bookmarks_firefox.py -i 12
+    
 
 Example 2, show links and open a url of ID 7 (7  Ubuntu and Free Software links): 
 
