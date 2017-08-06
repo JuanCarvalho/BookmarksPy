@@ -44,7 +44,6 @@ db = sqlite3.connect(find_database_places())
 parser = argparse.ArgumentParser()
 
 parser.add_argument("-l", "--listar", help="Lista as pastas dos favoritos", action="store_true")
-parser.add_argument("-p", "--pasta", help="Busca por pastas que contenham o termo", action="store_true")
 parser.add_argument("-s", "--search", help="Busca links que contenham o termo", action="store_true")
 parser.add_argument("-i","--id", help="Busca pelo id da pasta", action="store_true")
 parser.add_argument("-a","--all", help="Busca uma pagina aleatória em todas as pastas", action="store_true")
@@ -57,9 +56,9 @@ if len(sys.argv) < 2:
 
 args = parser.parse_args()
 
-if args.pasta:
+if args.search:
 	print
-	print "Busca as pastas que contenham : ", args.Arg
+	print "Busca por termo: ", args.Arg
 	print
 	lista_de_pastas = {}
 	str_busca = args.Arg.lower()
@@ -122,6 +121,7 @@ if args.listar:
     print "Try using: $ python random_bookmarks_firefox.py -i {0}".format(ultimo_id_mostrado)
     print
 
+# Esolhe a pasta pelo ID e retorna um site aleatório
 if args.id:
 	lista_de_pastas = {}
 	str_busca = args.Arg.lower()
@@ -185,9 +185,3 @@ if args.all:
 	url = lista_url[random.randrange(len(lista_url) - 1)]
 	# Abre o navegador padrão
 	webbrowser.open(url,new=new)
-
-if args.search:
-    # Buscar links que contenham a palavra recebida como argumento
-    # Find links containing the word received as an argument
-    print "Under development"
-    print "Find links containing the word received as an argument"
