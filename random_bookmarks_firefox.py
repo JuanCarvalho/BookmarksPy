@@ -20,9 +20,26 @@ import webbrowser
 import argparse
 import sys
 import traceback
+import os
 
-# Caminho para o arquivo places.sqlite
-db = sqlite3.connect("/home/juan/.mozilla/firefox/odwanb5d.default/places.sqlite")
+def find_database_places():
+	"""
+		Finding the database where firefox stores bookmarks
+	"""
+	# get home path user
+	home = os.environ['HOME']
+	# get home folder firefox
+	dir_firefox = os.path.join(home, '.mozilla/firefox')
+	# get folder *.default, where are sqlite database
+	dir_default = [name_dir for name_dir in os.listdir(dir_firefox) if name_dir.endswith('.default')][0]
+	# absolute place database
+	database = os.path.join(dir_firefox, dir_default, 'places.sqlite')
+	return database
+
+
+
+# Init connection with sqlite
+db = sqlite3.connect(find_database_places())
 
 parser = argparse.ArgumentParser()
 
