@@ -3,9 +3,6 @@
 Busca uma url randomicamente nos favoritos do firefox, e abre no navegador padrao. 
 Search for a random url in firefox favorites, and open in the default browser.
 
-Change the absolute path of the places.sqlite database (Temporary solution):
-db = sqlite3.connect("/home/myuser/.mozilla/firefox/my_folder.default/places.sqlite")
-
 Example 1, list all folders containing links:
 
     $ python random_bookmarks_firefox.py -l
